@@ -1,0 +1,31 @@
+@import 'ag-grid-community/styles/ag-grid.css';
+@import 'ag-grid-community/styles/ag-theme-alpine.css';
+.ag-theme-alpine-dark {
+  --ag-background-color: unset;
+  --ag-border-color: rgb(81, 81, 81);
+  /*--ag-border-color: var(--joy-palette-divider);*/
+  /*--ag-secondary-border-color: rgb(81, 81, 81);*/
+  /*--ag-header-background-color: transparent;*/
+  --ag-odd-row-background-color: transparent;
+  /*--ag-border-radius: var(--joy-radius-sm);*/
+}
+
+.ag-theme-alpine-dark {
+  --ag-background-color: unset;
+  --ag-border-color: rgb(81, 81, 81);
+  /*--ag-border-color: var(--joy-palette-divider);*/
+  /*--ag-secondary-border-color: rgb(81, 81, 81);*/
+  /*--ag-header-background-color: transparent;*/
+  --ag-odd-row-background-color: transparent;
+  /*--ag-border-radius: var(--joy-radius-sm);*/
+}
+
+.ag-root-wrapper {
+  border-left: unset;
+  border-right: unset;
+  border-top: unset;
+  border-bottom: unset;
+}
+.ag-pinned-right-header {
+  border-left: unset;
+}

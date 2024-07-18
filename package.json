@@ -1,0 +1,78 @@
+{
+  "name": "user",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@date-io/dayjs": "^2.16.0",
+    "@emotion/react": "^11.10.4",
+    "@emotion/styled": "^11.10.4",
+    "@hookform/resolvers": "^2.9.9",
+    "@mui/base": "^5.0.0-alpha.100",
+    "@mui/icons-material": "^5.10.6",
+    "@mui/joy": "^5.0.0-alpha.51",
+    "@mui/material": "^5.10.8",
+    "@mui/system": "^5.10.8",
+    "@mui/x-data-grid": "^5.17.6",
+    "@mui/x-date-pickers": "^5.0.4",
+    "@types/lodash": "^4.14.186",
+    "@types/node": "^16.11.65",
+    "@types/react": "^18.0.21",
+    "@types/react-dom": "^18.0.6",
+    "ag-grid-community": "^28.2.0",
+    "ag-grid-react": "^28.2.0",
+    "axios": "^1.1.3",
+    "builder-pattern": "^2.0.0",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.13.2",
+    "dayjs": "^1.11.5",
+    "http-proxy-middleware": "^2.0.6",
+    "lodash": "^4.17.21",
+    "moment": "^2.29.4",
+    "openapi-typescript-codegen": "^0.23.0",
+    "query-string": "^7.1.1",
+    "react": "^18.2.0",
+    "react-activation": "^0.12.0",
+    "react-daum-postcode": "^3.1.1",
+    "react-dom": "^18.2.0",
+    "react-export-excel": "^0.5.3",
+    "react-hook-form": "^7.37.0",
+    "react-router-dom": "^6.4.2",
+    "react-scripts": "5.0.1",
+    "swagger-typescript-api": "^10.0.2",
+    "typescript": "^4.8.4",
+    "web-vitals": "^2.1.4",
+    "zustand": "^4.1.2"
+  },
+  "scripts": {
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "eject": "react-app-rewired eject",
+    "generate": "npx swagger-typescript-api -p http://localhost:8090/v3/api-docs -o src/models --no-client  --name temp_index.ts",
+    "_generate": "npx openapi --input http://192.168.0.2:8080/v3/api-docs --output ./test --useUnionTypes true"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "browser": {
+    "fs": false
+  },
+  "devDependencies": {
+    "customize-cra": "^1.0.0",
+    "react-app-rewired": "^2.2.1"
+  }
+}
