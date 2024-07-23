@@ -1,8 +1,14 @@
-import axios, {AxiosError, AxiosInstance, AxiosRequestConfig, AxiosRequestHeaders, AxiosResponse} from 'axios';
-import queryString from 'query-string';
-import {getAuthorization, setAuthorization} from "../store/authorization";
+import axios, {
+  AxiosError,
+  AxiosInstance,
+  AxiosRequestConfig,
+  AxiosRequestHeaders,
+  AxiosResponse,
+} from "axios";
+import queryString from "query-string";
+import { getAuthorization, setAuthorization } from "../store/authorization";
 
-declare module 'axios' {
+declare module "axios" {
   interface AxiosResponse<T = any> extends Promise<T> {}
 }
 
@@ -30,18 +36,17 @@ export class ApiFieldError {
   public readonly reason: string | null;
 }
 
-
 export abstract class ApiClient {
   protected readonly instance: AxiosInstance;
 
   protected constructor(baseURL: string) {
     this.instance = axios.create({
-      baseURL,
+      baseURL: "https://admin-api.one-q.finance" + baseURL,
     });
     this.instance.defaults.headers.common = {
-      'Access-Control-Allow-Origin' : '*',
-      'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
-    }
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+    };
 
     this._initializeResponseInterceptor();
   }
@@ -54,86 +59,86 @@ export abstract class ApiClient {
 
     this.instance.interceptors.response.use(
       this._handleResponse,
-      this._handleError,
+      this._handleError
     );
   };
 
   private _handleResponse = ({ data, headers }: AxiosResponse) => {
     if (!!headers.authorization) {
-      const token = headers.authorization.replace(/^Bearer( )*/, '');
+      const token = headers.authorization.replace(/^Bearer( )*/, "");
       setAuthorization(token);
     }
     return data;
   };
 
-  protected async _handleError (error: AxiosError) {
+  protected async _handleError(error: AxiosError) {
     switch (error.response?.status) {
       case 403:
-        alert((error.response?.data as any).message)
-        window.location.href = "/sign-in"
+        alert((error.response?.data as any).message);
+        window.location.href = "/sign-in";
         throw new ApiException(error.response);
         break;
       case 400:
         throw new ApiException(error.response);
         break;
       case 404:
-        alert('서버와 통신이 원활하지 않습니다.')
-        break
+        alert("서버와 통신이 원활하지 않습니다.");
+        break;
       case 500:
-        alert('서버와 통신이 원활하지 않습니다.')
+        alert("서버와 통신이 원활하지 않습니다.");
         break;
     }
     throw new ApiException(error.response);
   }
 
-  private  _handleRequest(config: AxiosRequestConfig): AxiosRequestConfig {
+  private _handleRequest(config: AxiosRequestConfig): AxiosRequestConfig {
     const token = getAuthorization();
+    console.log(token);
     const { headers } = config;
     if (headers && token) {
-      headers.Authorization = `Bearer ${token}`
+      headers.Authorization = `Bearer ${token}`;
     }
     return config;
   }
 
   public get(path: string, params: Object = {}) {
     path = `${path}?${queryString.stringify(params)}`;
-    return this.instance.get(path)
+    return this.instance.get(path);
   }
 
-  public async post(path: string, payload?: any) :Promise<any>{
+  public async post(path: string, payload?: any): Promise<any> {
     return this.instance.request({
-      method: 'POST',
+      method: "POST",
       url: path,
       data: payload,
-      responseType: 'json'
+      responseType: "json",
     });
   }
 
-  public async put(path: string, payload?: any) :Promise<any>{
+  public async put(path: string, payload?: any): Promise<any> {
     return this.instance.request({
-      method: 'PUT',
+      method: "PUT",
       url: path,
       data: payload,
-      responseType: 'json'
+      responseType: "json",
     });
   }
 
-  public async patch(path: string, payload?: any) :Promise<any>{
+  public async patch(path: string, payload?: any): Promise<any> {
     return this.instance.request({
-      method: 'PATCH',
+      method: "PATCH",
       url: path,
       data: payload,
-      responseType: 'json'
+      responseType: "json",
     });
   }
 
-  public async delete(path: string, payload?: any) :Promise<any>{
+  public async delete(path: string, payload?: any): Promise<any> {
     return this.instance.request({
-      method: 'DELETE',
+      method: "DELETE",
       url: path,
       data: payload,
-      responseType: 'json'
+      responseType: "json",
     });
   }
-
 }

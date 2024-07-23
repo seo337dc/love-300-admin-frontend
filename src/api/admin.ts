@@ -1,13 +1,14 @@
-import {ApiClient} from "api/client";
+import { ApiClient } from "api/client";
 import {
-  AdminDtoSignInRequest, AdminDtoTransactionRequest,
+  AdminDtoSignInRequest,
+  AdminDtoTransactionRequest,
 } from "../models/Admin";
 
 export default class AdminApi extends ApiClient {
   private static classInstance?: AdminApi;
 
   private constructor() {
-    super('/api/admin');
+    super("/api/admin");
   }
   public static getInstance() {
     if (!this.classInstance) {
@@ -17,10 +18,10 @@ export default class AdminApi extends ApiClient {
   }
 
   public async signIn(params: AdminDtoSignInRequest): Promise<any> {
-    return await super.post('/signIn', params);
+    return await super.post("/sign-in", params);
   }
 
   public async transaction(params: AdminDtoTransactionRequest): Promise<any> {
-    return await super.post('/transaction', params);
+    return await super.post("/transaction", params);
   }
 }
