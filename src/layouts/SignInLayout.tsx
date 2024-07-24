@@ -46,7 +46,7 @@ const SignInLayout = ({ component, header }: SignInLayoutProps) => {
                 }}
               >
                 <img
-                  src={require("assets/images/admin_login_logo.webp")}
+                  src={require("assets/images/admin-login.webp")}
                   width={270}
                 />
                 <Typography

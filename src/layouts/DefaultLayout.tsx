@@ -81,7 +81,7 @@ const DefaultLayout = ({ children }: DefaultLayoutProps) => {
               <MenuIcon />
             </IconButton>
             <img
-              src={require("assets/images/gnb_logo.webp")}
+              src={require("assets/images/admin-gnb.webp")}
               width={150}
               style={{ marginTop: "5px" }}
             />
