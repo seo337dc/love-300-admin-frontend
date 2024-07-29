@@ -40,8 +40,19 @@ export abstract class ApiClient {
   protected readonly instance: AxiosInstance;
 
   protected constructor(baseURL: string) {
+    const env = process.env.REACT_APP_NODE_ENV ?? "";
+    let origin;
+
+    if (env === "production") {
+      origin = "https://admin-api.one-q.finance";
+    } else if (env === "development") {
+      origin = "https://dev-admin-api.one-q.finance";
+    } else {
+      origin = "http://localhost:8099";
+    }
+
     this.instance = axios.create({
-      baseURL: "https://admin-api.one-q.finance" + baseURL,
+      baseURL: origin + baseURL,
     });
     this.instance.defaults.headers.common = {
       "Access-Control-Allow-Origin": "*",

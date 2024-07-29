@@ -1,5 +1,5 @@
-@import 'ag-grid-community/styles/ag-grid.css';
-@import 'ag-grid-community/styles/ag-theme-alpine.css';
+@import "ag-grid-community/styles/ag-grid.css";
+@import "ag-grid-community/styles/ag-theme-alpine.css";
 .ag-theme-alpine-dark {
   --ag-background-color: unset;
   --ag-border-color: rgb(81, 81, 81);
