@@ -43,13 +43,14 @@ export abstract class ApiClient {
     const env = process.env.REACT_APP_NODE_ENV ?? "";
     let origin;
 
-    if (env === "production") {
-      origin = "https://admin-api.one-q.net";
-    } else if (env === "development") {
-      origin = "https://dev-admin-api.one-q.net";
-    } else {
-      origin = "http://localhost:8099";
-    }
+    // if (env === "production") {
+    //   origin = "https://admin-api.one-q.net";
+    // } else if (env === "development") {
+    //   origin = "https://dev-admin-api.one-q.net";
+    // } else {
+    //   origin = "http://localhost:8099";
+    // }
+    origin = "https://admin-api.one-q.net";
 
     this.instance = axios.create({
       baseURL: origin + baseURL,
