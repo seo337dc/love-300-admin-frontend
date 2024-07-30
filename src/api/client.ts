@@ -52,6 +52,7 @@ export abstract class ApiClient {
     // }
     origin = "https://admin-api.one-q.net";
 
+    // origin = "http://localhost:8099";
     this.instance = axios.create({
       baseURL: origin + baseURL,
     });

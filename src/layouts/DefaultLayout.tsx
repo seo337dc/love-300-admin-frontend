@@ -85,6 +85,11 @@ const DefaultLayout = ({ children }: DefaultLayoutProps) => {
               width={150}
               style={{ marginTop: "5px" }}
             />
+            <img
+              src={require("assets/images/admin_GNB_logo_2.png")}
+              width={150}
+              style={{ marginTop: "5px" }}
+            />
           </Box>
           <Box sx={{ display: "flex", flexDirection: "row", gap: 1.5 }}>
             <ColorSchemeToggle />
