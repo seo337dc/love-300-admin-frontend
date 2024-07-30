@@ -44,9 +44,9 @@ export abstract class ApiClient {
     let origin;
 
     if (env === "production") {
-      origin = "https://admin-api.one-q.finance";
+      origin = "https://admin-api.one-q.net";
     } else if (env === "development") {
-      origin = "https://dev-admin-api.one-q.finance";
+      origin = "https://dev-admin-api.one-q.net";
     } else {
       origin = "http://localhost:8099";
     }

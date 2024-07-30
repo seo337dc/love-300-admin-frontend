@@ -44,12 +44,12 @@
     "zustand": "^4.1.2"
   },
   "scripts": {
-    "start": "APP_ENV=local react-app-rewired start",
-    "build": "APP_ENV=local react-app-rewired build",
-    "start:dev": "APP_ENV=development react-app-rewired start",
-    "build:dev": "APP_ENV=development react-app-rewired build",
-    "start:prod": "APP_ENV=production && react-app-rewired start",
-    "build:prod": "APP_ENV=production && react-app-rewired build",
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "start:dev": "react-app-rewired start",
+    "build:dev": "react-app-rewired build",
+    "start:prod": "react-app-rewired start",
+    "build:prod": "react-app-rewired build",
     "eject": "react-app-rewired eject",
     "generate": "npx swagger-typescript-api -p http://localhost:8090/v3/api-docs -o src/models --no-client  --name temp_index.ts",
     "_generate": "npx openapi --input http://192.168.0.2:8080/v3/api-docs --output ./test --useUnionTypes true"
