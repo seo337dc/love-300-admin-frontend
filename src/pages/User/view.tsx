@@ -435,6 +435,29 @@ const UserViewPage = () => {
                 >
                   락업생성
                 </Button>
+                <Button
+                  loading={transactionIsLoading}
+                  onClick={() => {
+                    if (window.confirm(`비밀번호를 초기화 하시겠습니까?`)) {
+                      userApi
+                        .put<undefined, boolean>(
+                          `/initialize-password/${user?.idx}`
+                        )
+                        .then((data) => {
+                          if (data) {
+                            alert("");
+                          } else {
+                            alert("비밀번호 초기화 실패");
+                          }
+                        })
+                        .catch((e) => {
+                          alert(e.message ?? "비밀번호 초기화 실패");
+                        });
+                    }
+                  }}
+                >
+                  비밀번호 초기화
+                </Button>
               </Sheet>
             </Box>
           </Collapse>

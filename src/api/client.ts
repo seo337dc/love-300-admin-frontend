@@ -106,7 +106,7 @@ export abstract class ApiClient {
 
   private _handleRequest(config: AxiosRequestConfig): AxiosRequestConfig {
     const token = getAuthorization();
-    console.log(token);
+    // console.log(token);
     const { headers } = config;
     if (headers && token) {
       headers.Authorization = `Bearer ${token}`;
@@ -128,7 +128,7 @@ export abstract class ApiClient {
     });
   }
 
-  public async put(path: string, payload?: any): Promise<any> {
+  public async put<P = any, R = any>(path: string, payload?: P): Promise<R> {
     return this.instance.request({
       method: "PUT",
       url: path,
