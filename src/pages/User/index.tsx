@@ -150,11 +150,11 @@ const UserPage = () => {
             }
           />
           <FilterInput
-            label="아이디"
+            label="지갑주소"
             component={
               <TextField
                 name="walletAddress"
-                placeholder="아이디 검색"
+                placeholder="지갑주소 검색"
                 value={filterData.walletAddress}
                 onChange={onChangeFormHandler}
               />
