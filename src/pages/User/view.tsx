@@ -96,7 +96,7 @@ const UserViewPage = () => {
     Builder(GridColDef).field("txHash").headerName("거래해시").build(),
     Builder(GridColDef).field("txFrom").headerName("출금주소").build(),
     Builder(GridColDef).field("txTo").headerName("입금주소").build(),
-    Builder(GridColDef).field("amount").headerName("금액").build(),
+    Builder(GridColDef).field("amount").headerName("수량").build(),
     Builder(GridColDef)
       .field("unit")
       .headerName("단위")

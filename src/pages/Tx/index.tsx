@@ -39,7 +39,7 @@ const TxHistoryPage = () => {
     Builder(GridColDef).field("txHash").headerName("거래해시").build(),
     Builder(GridColDef).field("txFrom").headerName("출금주소").build(),
     Builder(GridColDef).field("txTo").headerName("입금주소").build(),
-    Builder(GridColDef).field("amount").headerName("금액").build(),
+    Builder(GridColDef).field("amount").headerName("수량").build(),
     Builder(GridColDef).field("unit").headerName("단위").width(80).flex(0).build(),
     Builder(GridColDef).field("status").headerName("상태").width(100).flex(0).build(),
     Builder(GridColDef).field("txDate").headerName("거래일시")
