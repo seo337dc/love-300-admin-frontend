@@ -87,7 +87,7 @@ const DefaultLayout = ({ children }: DefaultLayoutProps) => {
               style={{ marginTop: "5px", cursor: "pointer" }}
               alt={"gnb logo"}
               onClick={() => {
-                navigate("/user");
+                window.location.href = window.location.href;
               }}
             />
           </Box>
