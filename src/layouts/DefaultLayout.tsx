@@ -9,7 +9,7 @@ import * as React from "react";
 import DarkModeRoundedIcon from "@mui/icons-material/DarkModeRounded";
 import LightModeRoundedIcon from "@mui/icons-material/LightModeRounded";
 import GroupRoundedIcon from "@mui/icons-material/GroupRounded";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import RootLayout from "layouts/RootLayout";
 import { Collapse } from "@mui/material";
 
@@ -47,6 +47,7 @@ interface DefaultLayoutProps {
 const DefaultLayout = ({ children }: DefaultLayoutProps) => {
   const [drawerOpen, setDrawerOpen] = React.useState(false);
   const [sidePaneOpen, setSidePaneOpen] = React.useState<boolean>(true);
+  const navigate = useNavigate();
 
   return (
     <RootLayout>
@@ -83,7 +84,11 @@ const DefaultLayout = ({ children }: DefaultLayoutProps) => {
             <img
               src={require("assets/images/admin_GNB_logo_2.png")}
               width={150}
-              style={{ marginTop: "5px" }}
+              style={{ marginTop: "5px", cursor: "pointer" }}
+              alt={"gnb logo"}
+              onClick={() => {
+                navigate("/user");
+              }}
             />
           </Box>
           <Box sx={{ display: "flex", flexDirection: "row", gap: 1.5 }}>
