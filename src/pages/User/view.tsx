@@ -143,7 +143,7 @@ const UserViewPage = () => {
       );
       setRows(rows || []);
     };
-    fetchData();
+    !!user?.walletAddress && fetchData();
   }, [searchData]);
 
   const fetchUser = async () => {
