@@ -144,7 +144,7 @@ const UserViewPage = () => {
       setRows(rows || []);
     };
     !!user?.walletAddress && fetchData();
-  }, [searchData]);
+  }, [searchData, user?.walletAddress]);
 
   const fetchUser = async () => {
     try {
