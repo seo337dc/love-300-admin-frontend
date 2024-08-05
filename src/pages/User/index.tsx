@@ -59,7 +59,18 @@ const UserPage = () => {
       .width(250)
       .flex(0)
       .build(),
-    Builder(GridColDef).field("phone").headerName("휴대폰번호").build(),
+    Builder(GridColDef)
+      .field("phone")
+      .headerName("휴대폰번호")
+      .valueFormatter((params) => {
+        const phone: string = params.value ?? "";
+        const convertedPhone = phone.replace("+82", "");
+
+        return convertedPhone.startsWith("0")
+          ? convertedPhone
+          : "0" + convertedPhone;
+      })
+      .build(),
     Builder(GridColDef).field("walletAddress").headerName("지갑주소").build(),
     Builder(GridColDef)
       .field("signDate")
