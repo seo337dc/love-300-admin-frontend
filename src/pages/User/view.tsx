@@ -396,7 +396,7 @@ const UserViewPage = () => {
                   아이디
                 </Typography>
                 <Typography level="body1" textColor="text.primary">
-                  {user?.email}
+                  {user?.id}
                 </Typography>
 
                 <Typography level="body1" textColor="text.secondary">
@@ -457,6 +457,30 @@ const UserViewPage = () => {
                   }}
                 >
                   비밀번호 초기화
+                </Button>
+                <Button
+                  size="sm"
+                  color="danger"
+                  sx={{ fontSize: "sm", px: 1 }}
+                  onClick={() => {
+                    if (window.confirm(`계정을 삭제 하시겠습니까?`)) {
+                      userApi
+                        .delete(`/${user?.idx}`)
+                        .then((data) => {
+                          if (data) {
+                            alert("계정 삭제에 성공했습니다.");
+                            navigate("/user");
+                          } else {
+                            alert("계정 삭제 실패");
+                          }
+                        })
+                        .catch((e) => {
+                          alert(e.message ?? "계정 삭제 실패");
+                        });
+                    }
+                  }}
+                >
+                  계정삭제
                 </Button>
               </Sheet>
             </Box>
