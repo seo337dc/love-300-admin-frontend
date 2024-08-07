@@ -27,6 +27,7 @@ class FilterSearchModel implements UserDtoFetchRequest {
   walletAddress?: string = "";
   regStartDate?: string = "";
   regEndDate?: string = "";
+  phone?: string = "";
 }
 
 /**
@@ -168,6 +169,17 @@ const UserPage = () => {
                 name="walletAddress"
                 placeholder="지갑주소 검색"
                 value={filterData.walletAddress}
+                onChange={onChangeFormHandler}
+              />
+            }
+          />
+          <FilterInput
+            label="휴대폰 번호"
+            component={
+              <TextField
+                name="phone"
+                placeholder="휴대폰 번호 검색"
+                value={filterData.phone}
                 onChange={onChangeFormHandler}
               />
             }
