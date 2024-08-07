@@ -445,7 +445,7 @@ const UserViewPage = () => {
                         )
                         .then((data) => {
                           if (data) {
-                            alert("");
+                            alert("비밀번호 초기화에 성공했습니다.");
                           } else {
                             alert("비밀번호 초기화 실패");
                           }
