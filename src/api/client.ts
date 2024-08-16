@@ -40,8 +40,7 @@ export abstract class ApiClient {
   protected readonly instance: AxiosInstance;
 
   protected constructor(baseURL: string) {
-    const env = process.env.NODE_ENV ?? "";
-
+    const env = process.env.REACT_APP_ENV ?? "";
     let origin;
 
     if (env === "production") {
