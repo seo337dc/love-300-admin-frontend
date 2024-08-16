@@ -40,17 +40,18 @@ export abstract class ApiClient {
   protected readonly instance: AxiosInstance;
 
   protected constructor(baseURL: string) {
-    const env = process.env.REACT_APP_NODE_ENV ?? "";
+    const env = process.env.NODE_ENV ?? "";
+
     let origin;
 
-    // if (env === "production") {
-    //   origin = "https://admin-api.one-q.net";
-    // } else if (env === "development") {
-    //   origin = "https://dev-admin-api.one-q.net";
-    // } else {
-    //   origin = "http://localhost:8099";
-    // }
-    origin = "https://admin-api.one-q.net";
+    if (env === "production") {
+      origin = "https://admin-api.one-q.net";
+    } else if (env === "development") {
+      origin = "https://dev-admin-api.one-q.net";
+    } else {
+      origin = "http://localhost:8099";
+    }
+    // origin = "https://admin-api.one-q.net";
 
     // origin = "http://localhost:8099";
     this.instance = axios.create({
