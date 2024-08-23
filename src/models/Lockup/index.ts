@@ -1,4 +1,4 @@
-import {UserDtoFetchResponse} from "../User";
+import { UserDtoFetchResponse } from "../User";
 
 export class LockupDtoFetchRequest {
   page?: number;
@@ -21,7 +21,6 @@ export class LockupDtoFetchResponse {
   startDate?: string;
   endDate?: string;
   regDate?: string;
-
 }
 
 export class LockupDtoCreateRequest {
