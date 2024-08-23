@@ -48,7 +48,8 @@ export abstract class ApiClient {
     } else if (env === "development") {
       origin = "https://dev-admin-api.one-q.net";
     } else {
-      origin = "http://localhost:8099";
+      origin = "https://dev-admin-api.one-q.net";
+      // origin = "http://localhost:8099";
     }
     // origin = "https://admin-api.one-q.net";
 

@@ -1,5 +1,5 @@
-export class PageInfoDto {
-  content?: any;
+export class PageInfoDto<T = any> {
+  content?: T;
   number?: number;
   size?: number;
   first?: boolean;
