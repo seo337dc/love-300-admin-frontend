@@ -37,7 +37,7 @@ class FilterSearchModel implements StoreDtoFetchRequest {
   page: number = 0;
   size: number = 10;
   // sort?: { id: string } = { id: "asc" };
-  title?: string = "퀸";
+  title?: string = "";
   storeOwnerId?: string = "";
   businessNumber?: string = "";
   approveStatus?: string = "";
@@ -204,7 +204,7 @@ const StorePage = () => {
   const handleOnChangeSearchStatus = (v: any) => {
     setSearchStatus(v);
     setSearchData((prevState) => {
-      return { ...prevState, page: 0, status: v };
+      return { ...prevState, page: 0, approveStatus: `${v}` };
     });
   };
 
@@ -242,9 +242,6 @@ const StorePage = () => {
       }
     }
   };
-
-  console.log("searchData", searchData);
-  console.log("filterData", filterData);
 
   return (
     <>
