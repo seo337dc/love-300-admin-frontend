@@ -151,19 +151,19 @@ const StorePage = () => {
         />,
       ])
       .build(),
-    Builder(GridColDef)
-      .field("")
-      .pinned("right")
-      .width(80)
-      .cellRenderer(({ data }: ICellRendererParams) => [
-        <GridActionsCellItem
-          key="1"
-          icon={<DeleteIcon sx={{ fontSize: 25 }} />}
-          label="삭제"
-          onClick={() => handleOnClickDelete(data)}
-        />,
-      ])
-      .build(),
+    // Builder(GridColDef)
+    //   .field("")
+    //   .pinned("right")
+    //   .width(80)
+    //   .cellRenderer(({ data }: ICellRendererParams) => [
+    //     <GridActionsCellItem
+    //       key="1"
+    //       icon={<DeleteIcon sx={{ fontSize: 25 }} />}
+    //       label="삭제"
+    //       onClick={() => handleOnClickDelete(data)}
+    //     />,
+    //   ])
+    //   .build(),
   ];
 
   useEffect(() => {
