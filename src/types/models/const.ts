@@ -24,3 +24,9 @@ export const LOCKUP_STATUS = {
   END: { value: 2, name: "종료" },
   WITHDRAWAL_END: { value: 3, name: "전액출금완료" },
 } as const;
+
+export const STORE_STATUS = {
+  WAIT: { value: 0, name: "요청" },
+  PROGRESS: { value: 1, name: "승인" },
+  END: { value: 2, name: "거절" },
+};

@@ -26,6 +26,7 @@
     "class-validator": "^0.13.2",
     "dayjs": "^1.11.5",
     "http-proxy-middleware": "^2.0.6",
+    "libphonenumber-js": "^1.11.7",
     "lodash": "^4.17.21",
     "moment": "^2.29.4",
     "openapi-typescript-codegen": "^0.23.0",
