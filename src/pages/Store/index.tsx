@@ -275,7 +275,7 @@ const StorePage = () => {
                 separator={<KeyboardArrowRight />}
                 aria-label="breadcrumbs"
               >
-                <Typography level="h5"> 락업 검색 </Typography>
+                <Typography level="h5"> 가맹점 검색 </Typography>
               </Breadcrumbs>
               <Tabs
                 aria-label="Outlined tabs"
