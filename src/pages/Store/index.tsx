@@ -6,7 +6,6 @@ import moment from "moment";
 import * as React from "react";
 import Layout from "components/Layout";
 import { Filter, FilterInput } from "components/Filter";
-import DateRangePicker from "components/Common/DateRangePicker";
 import {
   Breadcrumbs,
   ModalClose,
@@ -315,7 +314,7 @@ const StorePage = () => {
           aria-labelledby="basic-modal-dialog-title"
           aria-describedby="basic-modal-dialog-description"
           sx={{
-            minWidth: 450,
+            minWidth: 800,
             borderRadius: "md",
             p: 3,
           }}
