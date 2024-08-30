@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { PageInfo } from "../../models/Store";
+import { PageInfo, StoreDtoFetchRequest } from "../../models/Store";
 import GridTable, { GridColDef } from "components/Common/GridTable";
 import { Builder } from "builder-pattern";
 import moment from "moment";
@@ -8,7 +8,6 @@ import Layout from "components/Layout";
 import { Filter, FilterInput } from "components/Filter";
 import DateRangePicker from "components/Common/DateRangePicker";
 import {
-  Box,
   Breadcrumbs,
   ModalClose,
   ModalDialog,
@@ -22,10 +21,6 @@ import { KeyboardArrowRight } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 import { MessageState } from "../../context/MessageContext";
 import Modal from "@mui/joy/Modal";
-import {
-  LockupDtoFetchRequest,
-  LockupDtoFetchResponse,
-} from "../../models/Lockup";
 import StoreApi from "../../api/store";
 import { STORE_STATUS } from "../../types/models/const";
 import { ICellRendererParams } from "ag-grid-community";
@@ -34,21 +29,22 @@ import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { ApiException } from "../../api/client";
 import StoreUpdate, { StoreUpdateModel } from "components/Modal/StoreUpdate";
-import {
-  StoreContent,
-  StoreDtoFetchResponse,
-  StoreDtoUpdateRequest,
-} from "models/Store";
+import { StoreContent, StoreDtoUpdateRequest } from "models/Store";
 
 const storeApi = StoreApi.getInstance();
 
-class FilterSearchModel implements LockupDtoFetchRequest {
+class FilterSearchModel implements StoreDtoFetchRequest {
   page: number = 0;
   size: number = 10;
-  status: number = -1;
-  text?: string = "";
-  startDate?: string = "";
-  endDate?: string = "";
+  // sort?: { id: string } = { id: "asc" };
+  title?: string = "";
+  storeOwnerId?: string = "";
+  businessNumber?: string = "";
+  approveStatus?: string = "";
+  roadAddress?: string = "";
+  detailAddress?: string = "";
+  representativeName?: string = "";
+  representativePhone?: string = "";
 }
 
 /**
@@ -208,12 +204,11 @@ const StorePage = () => {
   const handleOnChangeSearchStatus = (v: any) => {
     setSearchStatus(v);
     setSearchData((prevState) => {
-      return { ...prevState, page: 0, status: v };
+      return { ...prevState, page: 0, approveStatus: `${v}` };
     });
   };
 
   const handleOnClickUpdate = async (data: StoreContent) => {
-    console.log(data);
     setUpdateModel(data);
     setOpenUpdateModal(true);
   };
@@ -256,24 +251,12 @@ const StorePage = () => {
           onClickSearch={handleOnSearch}
         >
           <FilterInput
-            label="등록일시"
-            component={
-              <DateRangePicker
-                startValue={filterData.startDate}
-                endValue={filterData.endDate}
-                startName="startDate"
-                endName="endDate"
-                onChange={onChangeFormHandler}
-              />
-            }
-          />
-          <FilterInput
             label="제목"
             component={
               <TextField
-                name="text"
+                name="title"
                 placeholder="제목 검색"
-                value={filterData.text}
+                value={filterData.title}
                 onChange={onChangeFormHandler}
               />
             }
@@ -292,7 +275,7 @@ const StorePage = () => {
                 separator={<KeyboardArrowRight />}
                 aria-label="breadcrumbs"
               >
-                <Typography level="h5"> 락업 검색 </Typography>
+                <Typography level="h5"> 가맹점 검색 </Typography>
               </Breadcrumbs>
               <Tabs
                 aria-label="Outlined tabs"

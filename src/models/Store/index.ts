@@ -2,7 +2,7 @@ export class StoreDtoFetchRequest {
   page?: number;
   size?: number;
   status?: number;
-  text?: string;
+  title?: string;
   startDate?: string;
   endDate?: string;
 }
