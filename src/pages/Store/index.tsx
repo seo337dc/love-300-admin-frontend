@@ -36,8 +36,7 @@ class FilterSearchModel implements StoreDtoFetchRequest {
   page: number = 0;
   size: number = 10;
   // sort?: { id: string } = { id: "asc" };
-  title?: string = "";
-  storeOwnerId?: string = "";
+  // storeOwnerId?: string = "";
   businessNumber?: string = "";
   approveStatus?: string = "";
   roadAddress?: string = "";
@@ -250,12 +249,48 @@ const StorePage = () => {
           onClickSearch={handleOnSearch}
         >
           <FilterInput
-            label="제목"
+            label="도로명주소"
             component={
               <TextField
-                name="title"
-                placeholder="제목 검색"
-                value={filterData.title}
+                name="roadAddress"
+                placeholder="도로명주소"
+                value={filterData.roadAddress}
+                onChange={onChangeFormHandler}
+              />
+            }
+          />
+
+          <FilterInput
+            label="상세주소"
+            component={
+              <TextField
+                name="detailAddress"
+                placeholder="상세주소"
+                value={filterData.detailAddress}
+                onChange={onChangeFormHandler}
+              />
+            }
+          />
+
+          <FilterInput
+            label="대표명"
+            component={
+              <TextField
+                name="representativeName"
+                placeholder="대표명"
+                value={filterData.representativeName}
+                onChange={onChangeFormHandler}
+              />
+            }
+          />
+
+          <FilterInput
+            label="대표번호"
+            component={
+              <TextField
+                name="representativePhone"
+                placeholder="대표번호"
+                value={filterData.representativePhone}
                 onChange={onChangeFormHandler}
               />
             }
