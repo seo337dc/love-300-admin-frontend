@@ -16,7 +16,7 @@ import {
 } from '@mui/joy';
 import Typography from '@mui/joy/Typography';
 import TextField from '@mui/joy/TextField';
-import Switch from '@mui/joy/Switch';
+
 import { KeyboardArrowRight } from '@mui/icons-material';
 import { MessageState } from '../../context/MessageContext';
 import Modal from '@mui/joy/Modal';
@@ -28,7 +28,6 @@ import EditIcon from '@mui/icons-material/Edit';
 import { ApiException } from '../../api/client';
 import StoreUpdate from 'components/Modal/StoreUpdate';
 import { StoreContent, StoreDtoUpdateRequest } from 'models/Store';
-import StoreImage from 'components/Modal/StoreImage';
 
 const storeApi = StoreApi.getInstance();
 
