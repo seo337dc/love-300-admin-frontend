@@ -51,7 +51,15 @@ export class StoreContent {
   representativePhone: string; //"string";
   businessHours: string; //"string";
   storeType: number; // 0;
+  storeImages: TStoreImage[];
 }
+
+export type TStoreImage = {
+  id: number; // 86;
+  isPrimary: false;
+  type: string; // 'INFO';
+  url: string; // 'https://d2lpij0atxwy3f.cloudfront.net/dev/';
+};
 
 export class PageInfo {
   totalPages: 0;
