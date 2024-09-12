@@ -1,11 +1,11 @@
-import { useContext, useEffect, useState } from "react";
-import { PageInfo, StoreDtoFetchRequest } from "../../models/Store";
-import GridTable, { GridColDef } from "components/Common/GridTable";
-import { Builder } from "builder-pattern";
-import moment from "moment";
-import * as React from "react";
-import Layout from "components/Layout";
-import { Filter, FilterInput } from "components/Filter";
+import { useContext, useEffect, useState } from 'react';
+import { PageInfo, StoreDtoFetchRequest } from '../../models/Store';
+import GridTable, { GridColDef } from 'components/Common/GridTable';
+import { Builder } from 'builder-pattern';
+import moment from 'moment';
+import * as React from 'react';
+import Layout from 'components/Layout';
+import { Filter, FilterInput } from 'components/Filter';
 import {
   Breadcrumbs,
   ModalClose,
@@ -13,22 +13,22 @@ import {
   Tab,
   TabList,
   Tabs,
-} from "@mui/joy";
-import Typography from "@mui/joy/Typography";
-import TextField from "@mui/joy/TextField";
-import { KeyboardArrowRight } from "@mui/icons-material";
-import { useNavigate } from "react-router-dom";
-import { MessageState } from "../../context/MessageContext";
-import Modal from "@mui/joy/Modal";
-import StoreApi from "../../api/store";
-import { STORE_STATUS } from "../../types/models/const";
-import { ICellRendererParams } from "ag-grid-community";
-import { GridActionsCellItem } from "@mui/x-data-grid";
-import EditIcon from "@mui/icons-material/Edit";
-import DeleteIcon from "@mui/icons-material/Delete";
-import { ApiException } from "../../api/client";
-import StoreUpdate, { StoreUpdateModel } from "components/Modal/StoreUpdate";
-import { StoreContent, StoreDtoUpdateRequest } from "models/Store";
+} from '@mui/joy';
+import Typography from '@mui/joy/Typography';
+import TextField from '@mui/joy/TextField';
+import Switch from '@mui/joy/Switch';
+import { KeyboardArrowRight } from '@mui/icons-material';
+import { MessageState } from '../../context/MessageContext';
+import Modal from '@mui/joy/Modal';
+import StoreApi from '../../api/store';
+import { STORE_STATUS } from '../../types/models/const';
+import { ICellRendererParams } from 'ag-grid-community';
+import { GridActionsCellItem } from '@mui/x-data-grid';
+import EditIcon from '@mui/icons-material/Edit';
+import { ApiException } from '../../api/client';
+import StoreUpdate from 'components/Modal/StoreUpdate';
+import { StoreContent, StoreDtoUpdateRequest } from 'models/Store';
+import StoreImage from 'components/Modal/StoreImage';
 
 const storeApi = StoreApi.getInstance();
 
@@ -37,12 +37,12 @@ class FilterSearchModel implements StoreDtoFetchRequest {
   size: number = 10;
   // sort?: { id: string } = { id: "asc" };
   // storeOwnerId?: string = "";
-  businessNumber?: string = "";
-  approveStatus?: string = "";
-  roadAddress?: string = "";
-  detailAddress?: string = "";
-  representativeName?: string = "";
-  representativePhone?: string = "";
+  businessNumber?: string = '';
+  approveStatus?: string = '';
+  roadAddress?: string = '';
+  detailAddress?: string = '';
+  representativeName?: string = '';
+  representativePhone?: string = '';
 }
 
 /**
@@ -50,7 +50,6 @@ class FilterSearchModel implements StoreDtoFetchRequest {
  * @constructor
  */
 const StorePage = () => {
-  const navigate = useNavigate();
   const message = useContext(MessageState);
   const [filterData, setFilterData] = useState<FilterSearchModel>(
     new FilterSearchModel()
@@ -65,8 +64,8 @@ const StorePage = () => {
   const [pageInfo, setPageInfo] = useState<PageInfo>();
 
   const columns: Array<GridColDef> = [
-    Builder(GridColDef).field("no").headerName("No").width(90).flex(0).build(),
-    Builder(GridColDef).field("title").headerName("제목").width(90).build(),
+    Builder(GridColDef).field('no').headerName('No').width(90).flex(0).build(),
+    Builder(GridColDef).field('title').headerName('제목').width(90).build(),
     // Builder(GridColDef)
     //   .field("store.id")
     //   .headerName("번호")
@@ -75,53 +74,53 @@ const StorePage = () => {
     //   .build(),
 
     Builder(GridColDef)
-      .field("approveStatus")
-      .headerName("상태")
+      .field('approveStatus')
+      .headerName('상태')
       .valueFormatter((params) => {
         if (params.value === 0) {
-          return "요청중";
+          return '요청중';
         }
         if (params.value === 1) {
-          return "승인";
+          return '승인';
         }
 
-        return "거절";
+        return '거절';
       })
       .width(120)
       .flex(0)
       .build(),
     Builder(GridColDef)
-      .field("storeType")
-      .headerName("가맹점 타입")
+      .field('storeType')
+      .headerName('가맹점 타입')
       .valueFormatter((params) => {
         if (params.value === 0) {
-          return "기타";
+          return '기타';
         }
         if (params.value === 1) {
-          return "카페/디저트";
+          return '카페/디저트';
         }
 
         if (params.value === 2) {
-          return "음식점/식당";
+          return '음식점/식당';
         }
 
-        return "미용/뷰티";
+        return '미용/뷰티';
       })
       .width(90)
       .flex(0)
       .build(),
     Builder(GridColDef)
-      .field("businessNumber")
-      .headerName("사업자번호")
+      .field('businessNumber')
+      .headerName('사업자번호')
       .build(),
-    Builder(GridColDef).field("representativeName").headerName("대표").build(),
+    Builder(GridColDef).field('representativeName').headerName('대표').build(),
     Builder(GridColDef)
-      .field("representativePhone")
-      .headerName("전화번호")
+      .field('representativePhone')
+      .headerName('전화번호')
       .build(),
     Builder(GridColDef)
-      .field("address")
-      .headerName("주소")
+      .field('address')
+      .headerName('주소')
       .valueFormatter((params) => {
         const { data } = params;
         const value: StoreContent = data;
@@ -129,24 +128,24 @@ const StorePage = () => {
       })
       .build(),
     Builder(GridColDef)
-      .field("createDate")
-      .headerName("등록일시")
+      .field('createDate')
+      .headerName('등록일시')
       .valueFormatter((params) => {
         const date = moment(params.value);
-        return date.isValid() ? date.format("YY-MM-DD HH:mm") : "";
+        return date.isValid() ? date.format('YY-MM-DD HH:mm') : '';
       })
       .width(150)
       .flex(0)
       .build(),
     Builder(GridColDef)
-      .field("")
-      .pinned("right")
+      .field('')
+      .pinned('right')
       .width(80)
       .cellRenderer(({ data }: ICellRendererParams) => [
         <GridActionsCellItem
-          key="1"
+          key='1'
           icon={<EditIcon sx={{ fontSize: 25 }} />}
-          label="수정"
+          label='수정'
           onClick={() => handleOnClickUpdate(data)}
         />,
       ])
@@ -214,7 +213,7 @@ const StorePage = () => {
   const handleUpdateSubmitted = async (model: StoreDtoUpdateRequest) => {
     try {
       await storeApi.update(`${model.id}`, model);
-      message("완료되었습니다.", "success");
+      message('완료되었습니다.', 'success');
       setOpenUpdateModal(false);
       setSearchData((prevState) => {
         return { ...prevState };
@@ -226,34 +225,19 @@ const StorePage = () => {
     }
   };
 
-  const handleOnClickDelete = async (model: StoreUpdateModel) => {
-    if (!window.confirm("삭제하시겠습니까?")) return;
-    try {
-      await storeApi.delete(`${model.id}`);
-      message("완료되었습니다.", "success");
-      setSearchData((prevState) => {
-        return { ...prevState };
-      });
-    } catch (e) {
-      if (e instanceof ApiException) {
-        message(e.message);
-      }
-    }
-  };
-
   return (
     <>
-      <Layout.SidePane width="25vw">
+      <Layout.SidePane width='25vw'>
         <Filter
           onClickClear={handleOnClickClearFilter}
           onClickSearch={handleOnSearch}
         >
           <FilterInput
-            label="도로명주소"
+            label='도로명주소'
             component={
               <TextField
-                name="roadAddress"
-                placeholder="도로명주소"
+                name='roadAddress'
+                placeholder='도로명주소'
                 value={filterData.roadAddress}
                 onChange={onChangeFormHandler}
               />
@@ -261,11 +245,11 @@ const StorePage = () => {
           />
 
           <FilterInput
-            label="상세주소"
+            label='상세주소'
             component={
               <TextField
-                name="detailAddress"
-                placeholder="상세주소"
+                name='detailAddress'
+                placeholder='상세주소'
                 value={filterData.detailAddress}
                 onChange={onChangeFormHandler}
               />
@@ -273,11 +257,11 @@ const StorePage = () => {
           />
 
           <FilterInput
-            label="대표명"
+            label='대표명'
             component={
               <TextField
-                name="representativeName"
-                placeholder="대표명"
+                name='representativeName'
+                placeholder='대표명'
                 value={filterData.representativeName}
                 onChange={onChangeFormHandler}
               />
@@ -285,11 +269,11 @@ const StorePage = () => {
           />
 
           <FilterInput
-            label="대표번호"
+            label='대표번호'
             component={
               <TextField
-                name="representativePhone"
-                placeholder="대표번호"
+                name='representativePhone'
+                placeholder='대표번호'
                 value={filterData.representativePhone}
                 onChange={onChangeFormHandler}
               />
@@ -307,18 +291,18 @@ const StorePage = () => {
             <>
               <Breadcrumbs
                 separator={<KeyboardArrowRight />}
-                aria-label="breadcrumbs"
+                aria-label='breadcrumbs'
               >
-                <Typography level="h5"> 가맹점 검색 </Typography>
+                <Typography level='h5'> 가맹점 검색 </Typography>
               </Breadcrumbs>
               <Tabs
-                aria-label="Outlined tabs"
+                aria-label='Outlined tabs'
                 value={searchStatus}
                 onChange={(e, v: any) => handleOnChangeSearchStatus(v)}
               >
-                <TabList variant="soft">
+                <TabList variant='soft'>
                   {[
-                    { name: "전체", value: -1 },
+                    { name: '전체', value: -1 },
                     STORE_STATUS.WAIT,
                     STORE_STATUS.PROGRESS,
                     STORE_STATUS.END,
@@ -327,10 +311,10 @@ const StorePage = () => {
                       <Tab
                         key={idx}
                         variant={
-                          item.value === searchStatus ? "solid" : "plain"
+                          item.value === searchStatus ? 'solid' : 'plain'
                         }
                         color={
-                          item.value === searchStatus ? "primary" : "neutral"
+                          item.value === searchStatus ? 'primary' : 'neutral'
                         }
                         value={item.value}
                       >
@@ -346,23 +330,24 @@ const StorePage = () => {
       </Layout.Main>
       <Modal open={openUpdateModal} onClose={() => setOpenUpdateModal(false)}>
         <ModalDialog
-          aria-labelledby="basic-modal-dialog-title"
-          aria-describedby="basic-modal-dialog-description"
+          aria-labelledby='basic-modal-dialog-title'
+          aria-describedby='basic-modal-dialog-description'
           sx={{
             minWidth: 800,
-            borderRadius: "md",
+            borderRadius: 'md',
             p: 3,
           }}
         >
           <ModalClose />
           <Typography
-            id="basic-modal-dialog-title"
-            component="h2"
-            level="inherit"
+            id='basic-modal-dialog-title'
+            component='h2'
+            level='inherit'
             mb={3}
           >
             가맹점 수정
           </Typography>
+
           <StoreUpdate
             initModel={updateModel}
             handleSubmitted={handleUpdateSubmitted}
