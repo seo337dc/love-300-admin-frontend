@@ -29,7 +29,7 @@ class FilterSearchModel implements StoreOwnerFetchRequest {
 }
 
 /**
- * 락업 검색
+ * 가맹점주 검색
  * @constructor
  */
 const StoreOwnerPage = () => {
@@ -145,7 +145,7 @@ const StoreOwnerPage = () => {
                 separator={<KeyboardArrowRight />}
                 aria-label="breadcrumbs"
               >
-                <Typography level="h5"> 락업 검색 </Typography>
+                <Typography level="h5"> 가맹점주 검색 </Typography>
               </Breadcrumbs>
             </>
           }
